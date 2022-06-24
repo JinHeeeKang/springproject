@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="helloService" class="com.ktis.hello.service.HelloService">
+        <property name="helloDAO" ref="helloDAO"/>
+        <property name="anotherDAO" ref="anotherDAO"/>
+    </bean>
+
+<!--    <bean id="helloService" class="HelloService">-->
+<!--        <constructor-arg ref="helloDAO"/>-->
+<!--    </bean>-->
+
+    <bean id="helloDAO" class="com.ktis.hello.dao.HelloDAO"/>
+    <bean id="anotherDAO" class="com.ktis.hello.dao.AnotherDAO"/>
+
+
+    <!--    어노테이션으로 대체 가능, 이거 대신 아래 코드-->
+    <!--    <bean id="bbsService" class="com.ktis.hello.service.BbsService">-->
+    <!--        <property name="articleDAO" ref="articleDAO"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="articleDAO" class="com.ktis.hello.dao.ArticleDAO" />-->
+
+
+<!--    베이스패키지 하위에 있는거 모두 스캔해줌-->
+    <context:component-scan base-package="com.ktis.hello"/>
+
+    
+
+
+</beans>
