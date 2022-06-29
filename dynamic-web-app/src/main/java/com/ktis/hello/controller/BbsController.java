@@ -5,6 +5,7 @@ import com.ktis.hello.service.BbsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/bbs")
@@ -20,10 +21,10 @@ public class BbsController {
     }
 
     @PostMapping("/write")
-    public String doWrite(){
+    public ModelAndView doWrite(Article article){
+        bbsService.registArticle(article);
         System.out.println("POST request");
-        bbsService.registArticle(new Article());
-        return "write_ok";
+        return new ModelAndView("write_ok").addObject("article",article);
     }
 
     @GetMapping("/write")
