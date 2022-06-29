@@ -6,6 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>springproject</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <build>
@@ -20,6 +21,9 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>dynamic-web-app</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -27,5 +31,16 @@
             <artifactId>spring-context</artifactId>
             <version>4.3.30.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.30.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
+
+
+
 </project>
