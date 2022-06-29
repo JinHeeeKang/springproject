@@ -15,17 +15,20 @@ public class BbsController {
     private BbsService bbsService;
 
     @GetMapping("/{articleId}")
-    public String viewDetail(@PathVariable String articleId){
-        System.out.println("글번호는: "+ articleId);
-        return "write_ok";
+    @ResponseBody//리턴하는걸 그대로 리턴받아라
+    public Article viewDetail(@PathVariable String articleId){
+        Article article =  this.bbsService.viewArticleDetail(articleId);
+        return article;
     }
 
+
     @PostMapping("/write")
-    public ModelAndView doWrite(Article article){
-        bbsService.registArticle(article);
-        System.out.println("POST request");
-        return new ModelAndView("write_ok").addObject("article",article);
+    @ResponseBody
+    public Article write(@RequestBody Article article){
+        Article a = article;
+        return a;
     }
+
 
     @GetMapping("/write")
     public String write(){
