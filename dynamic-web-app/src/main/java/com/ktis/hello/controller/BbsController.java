@@ -14,6 +14,13 @@ public class BbsController {
     @Autowired
     private BbsService bbsService;
 
+    @GetMapping("")
+    public String index(){
+        return "index";
+    }
+
+
+
     @GetMapping("/{articleId}")
     @ResponseBody//리턴하는걸 그대로 리턴받아라
     public Article viewDetail(@PathVariable String articleId){
