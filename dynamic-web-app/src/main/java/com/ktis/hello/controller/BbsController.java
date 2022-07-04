@@ -15,16 +15,15 @@ public class BbsController {
     private BbsService bbsService;
 
     @GetMapping("")
-    public String index(){
+    public String index() {
         return "index";
     }
 
 
-
     @GetMapping("/{articleId}")
     @ResponseBody//리턴하는걸 그대로 리턴받아라
-    public Article viewDetail(@PathVariable String articleId){
-        Article article =  this.bbsService.viewArticleDetail(articleId);
+    public Article viewDetail(@PathVariable String articleId) {
+        Article article = this.bbsService.viewArticleDetail(articleId);
         return article;
     }
 
@@ -37,8 +36,15 @@ public class BbsController {
     }
 
 
+//    @PostMapping("/write")
+//    public ModelAndView doWrite(Article article) {
+//        bbsService.registArticle(article);
+//        System.out.println("POST request");
+//        return new ModelAndView("write_ok").addObject("article", article);
+//    }
+
     @GetMapping("/write")
-    public String write(){
+    public String write() {
         System.out.println("GET request");
         bbsService.registArticle(new Article());
         return "write_ok";
